@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ulises Bentancor · Proyectos, webs y juegos</title>
+<meta name="description" content="Proyectos, webs y juegos de Ulises Bentancor en un solo lugar: buscá, filtrá y jugá desde el navegador.">
+<link rel="canonical" href="https://elulises15.github.io/">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0f1117" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Ulises Bentancor">
+<meta property="og:title" content="Ulises Bentancor · Proyectos, webs y juegos">
+<meta property="og:description" content="Proyectos, webs y juegos que voy armando, todo en un solo lugar.">
+<meta property="og:url" content="https://elulises15.github.io/">
+<meta property="og:image" content="https://elulises15.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ulises Bentancor · Proyectos, webs y juegos">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  })();
+</script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#proyectos">Saltar a los proyectos</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="./" aria-label="Inicio · Ulises Bentancor">
+      <img src="favicon.svg" alt="" width="32" height="32"><span>Ulises Bentancor</span>
+    </a>
+    <nav class="topnav" aria-label="Enlaces">
+      <a href="https://github.com/ElUlises15" rel="me noopener">GitHub</a>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow">Hub personal</p>
+      <h1 id="hero-title">Ulises Bentancor</h1>
+      <p class="lead">Proyectos, webs y juegos que voy armando. Todo en un solo lugar: buscá, filtrá y entrá directo.</p>
+      <p class="hero-links">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn" href="https://github.com/ElUlises15" rel="me noopener">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          ElUlises15 en GitHub
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="featured" aria-labelledby="featured-title" id="destacados">
+    <div class="wrap">
+      <h2 id="featured-title">Destacados</h2>
+      <div class="grid grid-featured" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <section class="catalog" aria-labelledby="catalog-title" id="proyectos">
+    <div class="wrap">
+      <h2 id="catalog-title">Todos los proyectos</h2>
+      <form class="controls" id="controls" role="search" onsubmit="return false">
+        <div class="search">
+          <label for="q">Buscar</label>
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="q" type="search" placeholder="Buscá por nombre, descripción o etiqueta" autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+        <fieldset class="chips" id="catChips">
+          <legend>Categoría</legend>
+        </fieldset>
+        <fieldset class="chips" id="statusChips">
+          <legend>Estado</legend>
+        </fieldset>
+      </form>
+      <p class="result-count" id="resultCount" role="status" aria-live="polite"></p>
+      <div class="grid" id="mainGrid"></div>
+
+      <div id="pastBlock">
+        <h3 class="subhead" id="past-title">Proyectos anteriores / de cursada</h3>
+        <div class="grid" id="pastGrid"></div>
+      </div>
+
+      <div class="empty" id="emptyState" hidden>
+        <p><strong>No encontré nada con esos filtros.</strong></p>
+        <p>Probá con otra palabra o <button type="button" class="linklike" id="resetBtn">limpiá los filtros</button>.</p>
+      </div>
+      <noscript><p class="empty">Para ver el listado necesitás JavaScript activado. Mientras tanto, los proyectos están en <a href="https://github.com/ElUlises15">github.com/ElUlises15</a>.</p></noscript>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p>© <span id="year">2026</span> Ulises Bentancor · <a href="https://github.com/ElUlises15" rel="me noopener">GitHub</a></p>
+    <p>Última actualización: <time id="lastUpdated"></time></p>
+  </div>
+</footer>
+</body>
+</html>
