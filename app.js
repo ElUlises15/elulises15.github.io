@@ -10,7 +10,7 @@
     juego: 'Juego', web: 'Web', herramienta: 'Herramienta',
     emprendimiento: 'Emprendimiento', libro: 'Libro', curso: 'Cursada'
   };
-  var STATUSES = { online: 'Online', 'en-desarrollo': 'En desarrollo', archivado: 'Archivado' };
+  var STATUSES = { online: 'Online', 'en-desarrollo': 'En desarrollo' };
 
   var state = { q: '', cat: 'todas', status: 'todos' };
   var projects = [];
@@ -180,7 +180,11 @@
     $('q').focus();
   }
 
-  function init(data) {
+  /* status "archivado" = oculto: queda en projects.json pero no se muestra en ningún lado. */
+  var HIDDEN_STATUSES = ['archivado'];
+
+  function init(all) {
+    var data = all.filter(function (p) { return HIDDEN_STATUSES.indexOf(p.status) === -1; });
     projects = data.slice().sort(function (a, b) {
       return a.updated < b.updated ? 1 : a.updated > b.updated ? -1 : a.title.localeCompare(b.title, 'es');
     });

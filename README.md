@@ -24,8 +24,8 @@ Es un array de objetos. Cada proyecto tiene:
 |---|---|---|---|
 | `id` | texto | sí | Identificador único, en minúsculas y con guiones (`paladin-survival-mobile`). |
 | `title` | texto | sí | Nombre que se muestra. |
-| `category` | texto | sí | `juego` · `web` · `herramienta` · `emprendimiento` · `libro` · `curso` (los de `curso` van a la sección «Proyectos anteriores / de cursada»). |
-| `status` | texto | sí | `online` · `en-desarrollo` · `archivado`. |
+| `category` | texto | sí | `juego` · `web` · `herramienta` · `emprendimiento` · `libro` · `curso` (los de `curso` visibles van a la sección «Proyectos anteriores / de cursada»). |
+| `status` | texto | sí | `online` · `en-desarrollo` · `archivado`. **`archivado` = oculto:** el proyecto queda guardado en `projects.json` pero no aparece en ningún lado del sitio (tarjetas, destacados, búsqueda, contadores ni filtros). |
 | `description` | texto | sí | Una o dos oraciones, honestas y en castellano rioplatense. |
 | `tags` | array de textos | sí | Etiquetas para el buscador (puede ser `[]`). |
 | `liveUrl` | URL https | no | Link para jugar o ver la web. Muestra el botón **Jugar** (si es `juego`) o **Ver web**. |
@@ -52,11 +52,16 @@ Ejemplo:
 }
 ```
 
+Para **ocultar** un proyecto sin borrarlo, poné `"status": "archivado"`. Para volver a mostrarlo, cambiale el `status`
+a `online` o `en-desarrollo`. Los filtros de categoría y estado solo muestran opciones que tengan proyectos visibles,
+así que si una categoría queda vacía (por ejemplo `curso`), su botón desaparece solo.
+
 Proyectos privados o en preproducción: solo nombre, una línea neutral, `"status": "en-desarrollo"` y **sin** `liveUrl` ni `repoUrl`.
 
 ## Cómo agregar o actualizar un proyecto
 
 1. Editá `projects.json`: agregá el objeto nuevo (o cambiá `status`, links, `description` y `updated` del que ya existe).
+   Si un proyecto ya no se tiene que ver, no lo borres: ponele `"status": "archivado"` (queda oculto). No hace falta sacarle captura.
    Revisá que el JSON sea válido: `python3 -m json.tool projects.json > /dev/null`.
 2. (Opcional) Sacá una captura del link en vivo a 1280×800 y pasala a WebP 640×400, por ejemplo con Playwright + sharp:
 
