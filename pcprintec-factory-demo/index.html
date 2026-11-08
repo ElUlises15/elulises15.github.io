@@ -26,9 +26,47 @@
     @media(max-width:920px){.links,.header-cta{display:none}.menuBtn{display:block}.nav{height:65px}.links.open{position:absolute;display:flex;flex-direction:column;gap:0;top:65px;left:0;right:0;background:#101711;padding:14px 24px 22px;border-bottom:1px solid #39463a}.links.open a{padding:14px 6px}.hero-grid{grid-template-columns:1fr}.hero{padding:55px 0 70px}.hero h1{font-size:clamp(58px,9vw,88px)}.hero-art{height:460px}.hero-bottom{margin-top:42px}.section{padding:74px 0}.about{gap:35px}.feature-flex{gap:30px}.contact-grid{gap:35px}}
     @media(max-width:640px){.container{padding:0 20px}.topline{font-size:9px}.hero{padding:49px 0 61px}.hero h1{font-size:clamp(47px,12.5vw,69px);margin:22px 0}.intro{font-size:15px;line-height:1.7}.hero-buttons{gap:10px}.btn{padding:14px 17px;font-size:12px}.hero-art{height:400px}.artlabel h3{font-size:31px}.hero-bottom{gap:16px}.metric{padding-left:12px}.metric strong{font-size:25px}.metric span{font-size:10px}.ribbon-in{min-height:66px;justify-content:center;gap:20px;flex-wrap:wrap;padding:13px 0;font-size:10px}.ribbon-in span:nth-child(n+4){display:none}.section{padding:68px 0}.section-header{display:block;margin-bottom:28px}.section-header p{margin:20px 0 0}.cards{grid-template-columns:1fr}.service{min-height:267px;padding:25px}.service h3{font-size:24px}.feature{padding:68px 0}.feature h2{margin-bottom:25px}.feature-flex,.about,.contact-grid{grid-template-columns:1fr}.feature-image{height:285px}.about{gap:23px}.about .quote{padding:30px}.quote p{font-size:22px}.contact{padding:68px 0}.contact-meta{margin-top:24px}.form{padding:24px}.footer-flex{flex-direction:column;align-items:flex-start}.footer-flex .disclaimer{text-align:left}.brand{font-size:21px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{animation:none}*{transition:none!important}}
+  
+    /* FACTORY MOTION SYSTEM V2 — animaciones discretas, móviles y accesibles */
+    :root{--motion-ease:cubic-bezier(.22,1,.36,1)}
+    .motion-ready [data-reveal]{opacity:0;transform:translate3d(0,38px,0);filter:blur(4px);transition:opacity .85s var(--motion-ease),transform .85s var(--motion-ease),filter .85s var(--motion-ease);transition-delay:var(--reveal-delay,0ms)}
+    .motion-ready [data-reveal="slide-left"]{transform:translate3d(-42px,12px,0)}
+    .motion-ready [data-reveal="slide-right"]{transform:translate3d(42px,12px,0)}
+    .motion-ready [data-reveal="scale"]{transform:translate3d(0,18px,0) scale(.965)}
+    .motion-ready [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}
+    .motion-ready .reveal{animation:none}
+    #scroll-progress{pointer-events:none;position:fixed;z-index:100;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#94ca4b,#e2ffa2);box-shadow:0 0 16px #baf16b88}
+    .hero-art img,.feature-image img{transform:translate3d(0,var(--parallax-y,0px),0) scale(1.10);will-change:transform}
+    .hero-art .corner .pulse{animation:factoryPulse 2.8s ease-in-out infinite}
+    .hero-art .artlabel{transition:transform .7s var(--motion-ease)}
+    .hero-art:hover .artlabel{transform:translateY(-7px)}
+    .service{isolation:isolate}
+    .service:before{content:"";pointer-events:none;position:absolute;inset:-1px;background:radial-gradient(350px circle at var(--mouse-x,50%) var(--mouse-y,0%),#c9f57214,transparent 66%);opacity:0;transition:opacity .35s;z-index:-1}
+    .service:hover:before{opacity:1}
+    .service .glyph{transition:transform .45s var(--motion-ease),background .35s,border-color .35s}
+    .service:hover .glyph{transform:rotate(-7deg) scale(1.12);background:#c9f57215;border-color:var(--accent)}
+    .service .more,.btn span,.header-cta span{transition:transform .35s var(--motion-ease)}
+    .service:hover .more{transform:translateX(6px)}
+    .btn:hover span,.header-cta:hover span{transform:translate(3px,-3px)}
+    .btn:focus-visible,.header-cta:focus-visible,.service:focus-visible,.menuBtn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+    .metric strong{font-variant-numeric:tabular-nums}
+    .ribbon i{display:inline-block;animation:factorySpin 16s linear infinite}
+    .section-kicker:after{content:"";display:inline-block;vertical-align:middle;width:0;height:1px;background:currentColor;margin-left:10px;transition:width .9s var(--motion-ease)}
+    .section-kicker.is-visible:after{width:31px}
+    @keyframes factoryPulse{0%,100%{box-shadow:0 0 0 4px #c9f57226;opacity:1}50%{box-shadow:0 0 0 9px #c9f5720b;opacity:.72}}
+    @keyframes factorySpin{to{transform:rotate(360deg)}}
+    @media(hover:none){.service:before{display:none}}
+    @media(prefers-reduced-motion:reduce){
+      .motion-ready [data-reveal],.motion-ready [data-reveal].is-visible{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+      .hero-art img,.feature-image img{transform:none!important}
+      .hero-art .corner .pulse,.ribbon i{animation:none!important}
+      .service .glyph,.service .more,.hero-art .artlabel,.section-kicker:after{transition:none!important}
+    }
+
   </style>
 </head>
 <body>
+  <div id="scroll-progress" aria-hidden="true"></div>
   <div class="topline">CONCEPTO VISUAL NO OFICIAL <span>· DEMOSTRACIÓN CREADA POR FACTORY · NO AFILIADA AL COMERCIO</span></div>
   <header class="header">
     <div class="nav container">
@@ -119,5 +157,96 @@
     document.querySelectorAll('.service').forEach(card=>card.addEventListener('click',()=>{const s=card.querySelector('h3').textContent;const m={'Servicio técnico':'Reparar mi equipo','PCs a tu medida':'Armar una PC','Soluciones para PyMEs':'Soporte para mi empresa','Cámaras de seguridad':'Cámaras de seguridad'};const select=document.getElementById('servicio');select.value=m[s]||'Otra consulta'}));
     document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('nombre').value.trim();const service=document.getElementById('servicio').value;const detail=document.getElementById('detalle').value.trim();const message=`Hola PCPRINTEC, soy ${name}. Quisiera consultar sobre: ${service}.${detail?' '+detail:''}`;window.open('https://wa.me/5491156025998?text='+encodeURIComponent(message),'_blank','noopener,noreferrer')});
   </script>
+
+  <script id="factory-motion-v2">
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+      document.documentElement.classList.add('motion-ready');
+
+      // Revelado por secciones: cada bloque conserva su posición al entrar en pantalla.
+      const targets = [
+        ['.hero .eyebrow, .hero h1, .hero .intro, .hero .hero-buttons, .hero .hero-bottom', 'up', 110],
+        ['.hero-art','scale',0],
+        ['.section-header .section-kicker, .section-header h2, .section-header p','up',105],
+        ['.service','scale',90],
+        ['.feature .section-kicker, .feature h2','up',110],
+        ['.feature-image','slide-left',0],
+        ['.process-step','slide-right',110],
+        ['.about > div:first-child > *, .quote','up',90],
+        ['.faq .container > .section-kicker, .faq h2, .faq details','up',65],
+        ['.contact-grid > div:first-child > *, .contact .form','up',80]
+      ];
+      const items = new Set();
+      targets.forEach(([selector, kind, stagger]) => {
+        document.querySelectorAll(selector).forEach((el,index) => {
+          el.dataset.reveal = kind === 'up' ? 'up' : kind;
+          el.style.setProperty('--reveal-delay', Math.min(index*stagger,480)+'ms');
+          items.add(el);
+        });
+      });
+      document.querySelectorAll('.section-kicker').forEach(el => items.add(el));
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, {threshold:0.1,rootMargin:'0px 0px -45px 0px'});
+      items.forEach(el=>observer.observe(el));
+
+      // El scroll mueve ligeramente las fotografías y actualiza la barra de progreso.
+      const progress = document.getElementById('scroll-progress');
+      const images = [...document.querySelectorAll('.hero-art img,.feature-image img')];
+      let scheduled = false;
+      function updateMotion(){
+        const maxScroll = Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+        progress.style.transform='scaleX('+Math.min(1,window.scrollY/maxScroll)+')';
+        images.forEach(img=>{
+          const frame=img.parentElement.getBoundingClientRect();
+          if(frame.bottom<0 || frame.top>window.innerHeight)return;
+          const center=frame.top+frame.height/2;
+          const offset=Math.max(-18,Math.min(18,(window.innerHeight/2-center)*.055));
+          img.style.setProperty('--parallax-y',offset.toFixed(1)+'px');
+        });
+        scheduled=false;
+      }
+      function requestMotion(){if(!scheduled){scheduled=true;requestAnimationFrame(updateMotion)}}
+      window.addEventListener('scroll',requestMotion,{passive:true});
+      window.addEventListener('resize',requestMotion,{passive:true});
+      requestMotion();
+
+      // Número animado solamente cuando realmente aparece en pantalla.
+      const number=document.querySelector('.hero-bottom .metric strong');
+      if(number && /^\d+\+$/.test(number.textContent.trim())){
+        const goal=parseInt(number.textContent,10);
+        const counterObserver=new IntersectionObserver(entries=>{
+          if(!entries[0].isIntersecting)return;
+          counterObserver.disconnect();
+          const start=performance.now();
+          function tick(now){
+            const t=Math.min((now-start)/1100,1);
+            const smooth=1-Math.pow(1-t,3);
+            number.textContent=Math.round(goal*smooth)+'+';
+            if(t<1)requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        },{threshold:.8});
+        counterObserver.observe(number);
+      }
+
+      // Brillo sutil que responde al puntero en escritorio, sin interferir con touch.
+      if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+        document.querySelectorAll('.service').forEach(card=>{
+          card.addEventListener('pointermove',event=>{
+            const rect=card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x',(((event.clientX-rect.left)/rect.width)*100)+'%');
+            card.style.setProperty('--mouse-y',(((event.clientY-rect.top)/rect.height)*100)+'%');
+          },{passive:true});
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
